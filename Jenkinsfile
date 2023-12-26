@@ -1,19 +1,13 @@
 pipeline{
-    agent {
-        node {
-            label "maven-agent"
+  agent{
+    any
+  }
+
+  stages{
+    stage{
+        script{
+            echo "test file"
         }
     }
-    environment {
-        PATH = "/opt/apache-maven-3.9.1/bin:$PATH"
-    }
-    stages {
-        stage('build') {
-            steps{
-                echo "------------ build started ---------"
-                sh 'mvn clean deploy -Dmaven.test.skip=true'
-                echo "------------ build completed ---------"
-            }
-        }
-    }
+  }
 }
